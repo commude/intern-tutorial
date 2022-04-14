@@ -174,7 +174,7 @@ php artisan migrate:fresh --seed
 
 ## Access site
 ### user 
-[http://localhost:8081](http://localhost：8081)
+http://localhost:8081/
 ```bash
 user : undecided(users Table の email)
 password : undecided（password）
