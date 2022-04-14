@@ -26,3 +26,4 @@ src/vendor
 .DS_Store
 .vscode/*
 environments/local/.env
+appspec.yml
