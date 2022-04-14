@@ -31,9 +31,9 @@
 │     └─dockerfile 
 │      
 ├─environments (Docker Composer environments)
-│  └─ local
-│      ├─.env.example
-│      └─docker-compose.yml
+│  └─local
+│     ├─.env.example
+│     └─docker-compose.yml
 │
 └─src (Laravel App)
     ├─app
@@ -174,7 +174,7 @@ php artisan migrate:fresh --seed
 
 ## Access site
 ### user 
-[http://localhost：８０８１](http://localhost：８０８１)
+[http://localhost:8081](http://localhost：8081)
 ```bash
 user : undecided(users Table の email)
 password : undecided（password）
