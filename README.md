@@ -94,7 +94,7 @@ php artisan key:generate
 ```
 
 Edit the .env under src folder
-```
+```bash
 APP_URL=http://localhost
 ASSET_URL=http://localhost
 MIX_ASSET_URL=http://localhost
@@ -102,9 +102,9 @@ MIX_ASSET_URL=http://localhost
 APP_URL=http://localhost:8081
 ASSET_URL=http://localhost:8081
 MIX_ASSET_URL=http://localhost:8081
+```
 
-
-
+```bash
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -118,17 +118,17 @@ DB_PORT=3306
 DB_DATABASE=laravel-todo_db
 DB_USERNAME=root
 DB_PASSWORD=mysql
+```
 
-
-
+```bash
 UNDER_CONSTRUCTION_ENABLED=
 UNDER_CONSTRUCTION_HASH=
 ↓
 UNDER_CONSTRUCTION_ENABLED=false
 UNDER_CONSTRUCTION_HASH=
+```
 
-
-
+```bash
 LOG_CHANNEL=stack
 ↓
 LOG_CHANNEL=daily
