@@ -1,7 +1,8 @@
 # laravel-todo
 
 ## Requirements
-- PHP 7.4.26
+- PHP 8.1.2
+- Laravel 9.7.0
 - Any database system
 - Composer 2.x
 - Npm 7.21 (or anything near) & yarn
@@ -9,21 +10,31 @@
 
 ## Environment
 - Docker & Docker Compose
-- apache 
+- Nginx 
 - MySQL 5.7
 
 ## Directory Structure
 
 ```bash
 ├─docker (Docker Image builder)
-│  └─amazonlinux2
-│     └─conf
-│     │   └─http.conf
-│     │   └─supervisord.conf
-│     └─dockerfile
+│  ├─nginx
+│  │  ├─conf
+│  │  │   ├─conf.d
+│  │  │   │   ├─default-local.conf
+│  │  │   │   └─dedault-production.conf
+│  │  │   └─nginx.conf
+│  │  └─dockerfile
+│  │
+│  └─php-fpm
+│     ├─conf
+│     │   └─php.ini 
+│     └─dockerfile 
 │      
 ├─environments (Docker Composer environments)
-│  └─local
+│  └─ local
+│      ├─.env.example
+│      └─docker-compose.yml
+│
 └─src (Laravel App)
     ├─app
     ├─bootstrap
@@ -53,6 +64,7 @@
 
 ```bash
 cd environments/local
+cp .env.example .env
 docker-compose build
 ```
 
@@ -63,6 +75,7 @@ docker-compose up -d
 ```
 
 3. Entering the Container&Install libraries
+
 ```bash
 docker exec -it laravel-todo.php-fpm bash
 ```
@@ -73,7 +86,7 @@ local %  →→　　bash-4.2#
 composer install
 ```
 
-4. Make .env
+4. Make & edit .env
 
 ```bash
 cp .env.example .env
@@ -83,7 +96,7 @@ php artisan key:generate
 Edit the .env under src folder
 ```
 APP_URL=http://localhost
-ASSET_URL=http://localhost/assets
+ASSET_URL=http://localhost
 MIX_ASSET_URL=http://localhost
 ↓
 APP_URL=http://localhost:8081
@@ -113,7 +126,14 @@ UNDER_CONSTRUCTION_HASH=
 ↓
 UNDER_CONSTRUCTION_ENABLED=false
 UNDER_CONSTRUCTION_HASH=
+
+
+
+LOG_CHANNEL=stack
+↓
+LOG_CHANNEL=daily
 ```
+
 
 save
 
@@ -137,52 +157,27 @@ Preparing db
 php artisan migrate
 php artisan db:seed
 ```
+
 refresh db
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-5. Install node modules and generate css/js files using yarn
-Out of the container
-```bash
-exit
-```
-bash-4.2# →→ local % 
 
-```bash
-cd ../../src
-npm install -g yarn       # execute this command if you don't have yarn installed yet.
-yarn
-yarn install
-yarn dev #or yarn watch
-```
-
-6. Access your localhost:8081
+５. Access your localhost:8081
 
 
 
 ## Preparing db
 1. php artisan migrate:fresh
-2. php artisan insert:code
-3. php artisan insert:coupon
-4. php artisan db:seed
-5. 
+2. php artisan db:seed
 
-## サイトにアクセス
-
-### user
-[http://localhost：８０８１/login](http://localhost：８０８１/login)
-```
+## Access site
+### user 
+[http://localhost：８０８１](http://localhost：８０８１)
+```bash
 user : undecided(users Table の email)
 password : undecided（password）
 ```
 
-### admin
-[http://localhost:8081/LS_Cmd_2022-06/login](http://localhost:8081/LS_Cmd_2022-06/login)
-
-```
-user : 
-admin@admin.com 
-password : 
-password
 
